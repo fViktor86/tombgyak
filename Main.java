@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Main {
@@ -210,6 +211,32 @@ public class Main {
         System.out.println();
 
         System.out.println("17. feladat");
+        ArrayList<Integer> lottoSzamok = new ArrayList<>();
+        int db = 0, csere;
+        do {
+            tmpErtek = (int) (Math.random()*90+1);
+            if (!lottoSzamok.contains(tmpErtek)){
+                lottoSzamok.add(tmpErtek);
+                db++;
+            }
+        }
+        while (db != 5);
+        for (int i = 0; i < lottoSzamok.size()-1; i++) {
+            for (int j = i+1; j < lottoSzamok.size(); j++) {
+                if( lottoSzamok.get(i) > lottoSzamok.get(j) ){
+                    csere = lottoSzamok.get(i);
+                    lottoSzamok.set(i, lottoSzamok.get(j));
+                    lottoSzamok.set(j, csere);
+                }
+            }
+        }
+        System.out.print("Éééés az eheti nyertes lottószámok: ");
+        for (Integer i : lottoSzamok){
+            System.out.print(i+" ");
+        }
+        System.out.println();
+
+        System.out.println("18. feladat");
 
     }
 }
