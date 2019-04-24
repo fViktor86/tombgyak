@@ -5,6 +5,9 @@ public class Main {
 
     public static void main(String[] args) {
 
+        System.out.println("Feladatok: https://www.webotlet.hu/?p=993");
+        System.out.println();
+
         TombGeneral tombGeneralas = new TombGeneral();
         int[] tomb_10_0_100 = tombGeneralas.tombVissza(10, 0, 100);
         System.out.println("Tömb: 10 elemű, 0-100:");
@@ -235,8 +238,54 @@ public class Main {
             System.out.print(i+" ");
         }
         System.out.println();
+        System.out.println();
 
         System.out.println("18. feladat");
+        segedSzam = (int)(Math.random()*4+6);
+        int[] tomb_random_0_9 = tombGeneralas.tombVissza(segedSzam, 0, 9);
+        boolean vanBenneIsmetlodo = true;
 
+        System.out.println(Arrays.toString(tomb_random_0_9));
+        do {
+
+        }
+        while (!vanBenneIsmetlodo);
+        System.out.println();
+
+        System.out.println("19. feladat");
+        segedSzam = (int)(Math.random()*4+6);
+        int[] tomb02_random_0_9 = tombGeneralas.tombVissza(segedSzam, 0, 9);
+        vanBenneIsmetlodo = true;
+        int vizsgSeged = 0, vizsgSegedVissza = 0;
+
+        for (int i = 0; i < tomb02_random_0_9.length; i++) {
+            System.out.print(tomb02_random_0_9[i] + " ");
+            vizsgSeged = tomb02_random_0_9[i];
+            for (int j = tomb02_random_0_9.length-1; j > 0; j--) {
+
+            }
+        }
+        System.out.println();
+        System.out.println();
+
+        System.out.println("20. feladat");
+        int[] tomb_20_0_5 = tombGeneralas.tombVissza(20, 0, 5);
+        int[] tombLegTobb = new int[6];
+
+        for (int i = 0; i < tomb_20_0_5.length; i++) {
+            System.out.print(tomb_20_0_5[i] + " ");
+            tombLegTobb[tomb_20_0_5[i]]++;
+        }
+        System.out.println();
+
+        System.out.println(Arrays.toString(tombLegTobb));
+        int vizsgalathozSeged = 0;
+        for (int i = 1; i < tombLegTobb.length; i++) {
+            if (tombLegTobb[i] > tombLegTobb[vizsgalathozSeged]){
+                vizsgalathozSeged = i;
+            }
+        }
+        System.out.println("A tömbben a '" + vizsgalathozSeged + "' szám szerepel a legtöbbször, mégpedig " + tombLegTobb[vizsgalathozSeged] + " alkalommal.");
+        System.out.println();
     }
 }
