@@ -172,7 +172,6 @@ public class Main {
             for (int j = i+1; j < tomb_random_0_20.length; j++) {
                 vege += tomb_random_0_20[j];
             }
-            //System.out.println("Segéd: " + segedSzam + " | Tömb: " + Arrays.toString(tomb_random_0_20) + " | Eleje: " + eleje + " | Vege: " + vege);
             if (eleje == vege) {
                 lehetTorni = true;
                 cMag = i;
@@ -242,30 +241,60 @@ public class Main {
 
         System.out.println("18. feladat");
         segedSzam = (int)(Math.random()*4+6);
-        int[] tomb_random_0_9 = tombGeneralas.tombVissza(segedSzam, 0, 9);
-        boolean vanBenneIsmetlodo = true;
+        int[] tomb_random00_0_9 = tombGeneralas.tombVissza(segedSzam, 0, 9);
+        ArrayList<Integer> kiirashoz00ArrList = new ArrayList<>();
+        int index = 1;
+        boolean vanBenneIsmetlodo = false;
 
-        System.out.println(Arrays.toString(tomb_random_0_9));
+        System.out.println(Arrays.toString(tomb_random00_0_9));
+
         do {
+            ArrayList<Integer> elejeArrList = new ArrayList<>();
+            ArrayList<Integer> vegeArrList = new ArrayList<>();
 
+            for (int i = 0; i < index; i++) {
+                elejeArrList.add(tomb_random00_0_9[i]);
+            }
+            for (int i = tomb_random00_0_9.length-index; i < tomb_random00_0_9.length; i++) {
+                vegeArrList.add(tomb_random00_0_9[i]);
+            }
+            vanBenneIsmetlodo = false;
+
+            for (int i = 0; i < index; i++) {
+                if (elejeArrList.get(i).equals(vegeArrList.get(i))){
+                    vanBenneIsmetlodo = true;
+                }
+                else {
+                    vanBenneIsmetlodo = false;
+                    break;
+                }
+            }
+            if (vanBenneIsmetlodo){
+                for (int i = 0; i < index; i++) {
+                    kiirashoz00ArrList.add(elejeArrList.get(i));
+                }
+            }
+            index++;
         }
-        while (!vanBenneIsmetlodo);
+        while (!vanBenneIsmetlodo && index < tomb_random00_0_9.length);
+
+        System.out.println(vanBenneIsmetlodo ? "Van benne ismétlődő: " + Arrays.toString(kiirashoz00ArrList.toArray()) : "Nincs benne ismétlődő.");
         System.out.println();
 
         System.out.println("19. feladat");
         segedSzam = (int)(Math.random()*4+6);
-        int[] tomb02_random_0_9 = tombGeneralas.tombVissza(segedSzam, 0, 9);
-        vanBenneIsmetlodo = true;
-        int vizsgSeged = 0, vizsgSegedVissza = 0;
+        int[] tomb_random_0_9 = tombGeneralas.tombVissza(segedSzam, 0, 9);
+        ArrayList<Integer> kiirashozArrList = new ArrayList<>();
+        index = 0;
+        vanBenneIsmetlodo = false;
 
-        for (int i = 0; i < tomb02_random_0_9.length; i++) {
-            System.out.print(tomb02_random_0_9[i] + " ");
-            vizsgSeged = tomb02_random_0_9[i];
-            for (int j = tomb02_random_0_9.length-1; j > 0; j--) {
-
-            }
+        System.out.println(Arrays.toString(tomb_random_0_9));
+        while (tomb_random_0_9[index] == tomb_random_0_9[tomb_random_0_9.length-1-index]){
+            kiirashozArrList.add(tomb_random_0_9[index]);
+            index++;
+            vanBenneIsmetlodo = true;
         }
-        System.out.println();
+        System.out.println(vanBenneIsmetlodo ? "Van: " + Arrays.toString(kiirashozArrList.toArray()) : "Nincs benne ismétlődő rész.");
         System.out.println();
 
         System.out.println("20. feladat");
